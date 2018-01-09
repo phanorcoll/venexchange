@@ -1,0 +1,9 @@
+{
+  "name": "venexchange",
+  "version": "1.0.0",
+  "description": "Dashboard to display de current value of a USD in Venezuela",
+  "main": "index.js",
+  "repository": "https://phanorcoll@bitbucket.org/phanorcoll/venexchange.git",
+  "author": "Phanor Coll <phanorcoll@gmail.com>",
+  "license": "MIT"
+}
