@@ -1,5 +1,17 @@
 //fonts
+$fa-font-path: "~font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome";
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+$main-font:'Roboto', sans-serif;
 
 //Colors
+$font-main-color:#333;
+$top-bar-bg:#2196F3;
+$background-color:#eee;
+$usd-color:#1bcb23;
+$bt-color:#f37c08;
+$eth-color:#898888;
+//Misc
+$main-padding:25px;
 
 

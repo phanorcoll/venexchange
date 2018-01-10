@@ -1,1 +1,99 @@
 //base styles css-grids
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: $main-font;
+    font-weight: 400;
+    line-height: 1.5em;
+    font-size: 16px;
+    color: $font-main-color;
+    background: $background-color;
+}
+
+.top-main-bar {
+    display: grid;
+    grid-template-areas: "appname socialicons";
+    background: $top-bar-bg;
+    padding: $main-padding;
+    border-bottom: 1px solid #8c8a8c;
+    margin-bottom: 15px;
+    -webkit-box-shadow: 0px 4px 4px -2px rgba(140, 138, 140, 1);
+    -moz-box-shadow: 0px 4px 4px -2px rgba(140, 138, 140, 1);
+    box-shadow: 0px 4px 4px -2px rgba(140, 138, 140, 1);
+    .app-name {
+        grid-area: appname;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: #fff;
+        font-size: 25px;
+    }
+    .social-icons {
+        grid-area: socialicons;
+        font-size: 25px;
+        text-align: right;
+    }
+}
+
+.main-wrapper {
+    padding: $main-padding;
+    .card-wrapper {
+        display: grid;
+        grid-template-areas: "dolartoday bitcoin etherium";
+        grid-gap: 20px;
+        .dolartoday {
+            grid-area: dolartoday;
+        }
+        .bitcoin {
+            grid-area: bitcoin;
+        }
+        .etherium {
+            grid-area: etherium;
+        }
+    }
+    .card {
+        display: inline-block;
+        position: relative;
+        width: 100%;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075);
+        color: rgba(0, 0, 0, 0.87);
+        background: #fff;
+        .inner-wrapper {
+            display: grid;
+            grid-template-areas: "title title" "currency-icon currency-amount";
+            padding: 30px;
+            align-items: center;
+            .title {
+                grid-area: title;
+                font-size: 25px;
+                text-align: right;
+                border-bottom: 1px solid #e6e3e3;
+                padding-bottom: 10px;
+                margin-bottom: 20px;
+            }
+            .currency-icon {
+                grid-area: currency-icon;
+                font-size: 40px;
+                .bitcoin {
+                    color: $bt-color;
+                }
+                .dolartoday {
+                    color: $usd-color;
+                }
+                .ethereum {
+                    color: $eth-color;
+                }
+                img{
+                    width: 40px;
+                }
+            }
+            .currency-amount {
+                grid-area: currency-amount;
+                font-size: 30px;
+                text-align: right;
+            }
+        }
+    }
+}

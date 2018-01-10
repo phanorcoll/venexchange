@@ -5,7 +5,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     entry: {
-        //entry: './app/index.jsx',
         entry: './app/index.jsx'
     },
     output: {
@@ -62,7 +61,7 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: 'app/index.html',
-            title: 'Expensify app',
+            title: 'Venexchange - Precios actual del Dolar y Cripto monedas',
             inject: 'body'
         })
     ]
