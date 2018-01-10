@@ -1,4 +1,3 @@
-//base styles css-grids
 * {
     margin: 0;
     padding: 0;
@@ -94,6 +93,18 @@ body {
                 font-size: 30px;
                 text-align: right;
             }
+        }
+    }
+    .chart-container{
+        display: grid;
+        grid-template-areas: "chart-dt chart-btceth";
+        grid-template-columns: 1fr 1fr;
+        height: 400px;
+        .dolar-today-data{
+            grid-area: chart-dt;
+        }
+        .btc-eth-data{
+            grid-area: chart-btceth;
         }
     }
 }
