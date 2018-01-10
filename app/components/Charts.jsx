@@ -78,10 +78,10 @@ const Charts = () => {
     return (
         <div className="main-wrapper">
             <div className="chart-container">
-                <div className="dolar-today-data">
+                <div className="dolar-today-data card">
                     <Linechart chartData={dolarTodaydata} label="DolarToday" />
                 </div>
-                <div className="btc-eth-data">
+                <div className="btc-eth-data card">
                 <Linechart chartData={BtcEthData} label="bitcoin - Etherum" />
             </div>
             </div>
