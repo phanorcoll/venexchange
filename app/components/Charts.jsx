@@ -24,7 +24,6 @@ const Charts = () => {
                 pointHoverBorderWidth: 2,
                 pointRadius: 4,
                 pointHitRadius: 10,
-                // notice the gap in the data and the spanGaps: true
                 data: [65, 59, 80, 81, 56, 55, 40],
             }
         ]
