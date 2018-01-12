@@ -13,7 +13,7 @@ const CurrencyCard = (props) => {
                     {props.currencyIcon ? <img src={props.currencyIcon} alt="Bitcoin" /> : <i className={`fa ${props.faicon}  ${props.currency}`} aria-hidden="true"></i>}
                 </div>
                 <div className="currency-amount">
-                    {`${props.currencySymbol} 157.541,72`}
+                    {`${props.currencySymbol} ${props.amount}`}
                 </div>
             </div>
         </div>
@@ -26,5 +26,9 @@ CurrencyCard.propTypes = {
     title: PropTypes.string.isRequired,
     currencySymbol: PropTypes.string.isRequired,
 };
+
+CurrencyCard.defaultProps = {
+    amount:'100.00'
+  };
 
 export default CurrencyCard;
