@@ -3,15 +3,23 @@ import CurrencyCard from './CurrencyCard.jsx';
 import Eth from '../images/ETH.svg';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { dtData } from '../actions/actions.jsx';
+import { dtData, cryptoCurrencyData } from '../actions/actions.jsx';
+import LoadingComponent from './Loading.jsx';
 
 class Container extends Component {
 
-    componentDidMount() {
+    componentWillMount() {
         this.props.fetchDtData();
+        this.props.fetchCryptoCurrencyData();
     }
 
     render() {
+
+        if (this.props.cryptoCurrencyValue[0] === undefined) {
+            return <div className="main-wrapper"><LoadingComponent text='Cargando data...!' /></div>
+        }
+
+
         return (
             <div className="main-wrapper">
                 <div className="card-wrapper">
@@ -19,10 +27,10 @@ class Container extends Component {
                         <CurrencyCard faicon="fa-usd" currency="dolartoday" title="Dolartoday" currencySymbol="Bs." amount={this.props.dtValue} />
                     </div>
                     <div className="bitcoin">
-                        <CurrencyCard faicon="fa-btc" currency="bitcoin" title="bitcoin" currencySymbol="USD." />
+                        <CurrencyCard faicon="fa-btc" currency={this.props.cryptoCurrencyValue[0].id} title={this.props.cryptoCurrencyValue[0].name} currencySymbol="USD." price={this.props.cryptoCurrencyValue[0].price_usd} />
                     </div>
                     <div className="etherium">
-                        <CurrencyCard currencyIcon={Eth} currency="ethereum" title="Ethereum" currencySymbol="USD." />
+                        <CurrencyCard currencyIcon={Eth} currency={this.props.cryptoCurrencyValue[1].id} title={this.props.cryptoCurrencyValue[1].name} currencySymbol="USD." price={this.props.cryptoCurrencyValue[1].price_usd} />
                     </div>
                 </div>
             </div>
@@ -36,14 +44,16 @@ class Container extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
-        fetchDtData: dtData
+        fetchDtData: dtData,
+        fetchCryptoCurrencyData: cryptoCurrencyData
     }, dispatch);
 };
 
 const mapStateToProps = (state) => {
     return {
-        dtValue : state.dt
-     }
+        dtValue: state.dt,
+        cryptoCurrencyValue: state.cryptoCurrency
+    }
 }
 
 
