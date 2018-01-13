@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import numeral from 'numeral';
 
 const CurrencyCard = (props) => {
 
@@ -13,7 +14,7 @@ const CurrencyCard = (props) => {
                     {props.currencyIcon ? <img src={props.currencyIcon} alt="Bitcoin" /> : <i className={`fa ${props.faicon}  ${props.currency}`} aria-hidden="true"></i>}
                 </div>
                 <div className="currency-amount">
-                    {`${props.currencySymbol} ${props.price}`}
+                    {`${props.currencySymbol} ${numeral(props.price).format('$0,0.00')}`}
                 </div>
             </div>
         </div>
