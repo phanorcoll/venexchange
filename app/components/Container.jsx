@@ -15,16 +15,15 @@ class Container extends Component {
 
     render() {
 
-        if (this.props.cryptoCurrencyValue[0] === undefined) {
+        if (this.props.cryptoCurrencyValue[0] === undefined || this.props.dtValue["USD"] === undefined) {
             return <div className="main-wrapper"><LoadingComponent text='Cargando data...!' /></div>
         }
-
 
         return (
             <div className="main-wrapper">
                 <div className="card-wrapper">
                     <div className="dolartoday">
-                        <CurrencyCard faicon="fa-usd" currency="dolartoday" title="Dolartoday" currencySymbol="Bs." amount={this.props.dtValue} />
+                        <CurrencyCard faicon="fa-usd" currency="dolartoday" title="Dolartoday" currencySymbol="Bs." price={this.props.dtValue["USD"].dolartoday} />
                     </div>
                     <div className="bitcoin">
                         <CurrencyCard faicon="fa-btc" currency={this.props.cryptoCurrencyValue[0].id} title={this.props.cryptoCurrencyValue[0].name} currencySymbol="USD." price={this.props.cryptoCurrencyValue[0].price_usd} />
