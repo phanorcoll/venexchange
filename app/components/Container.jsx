@@ -51,7 +51,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
     return {
         dtValue: state.dt,
-        cryptoCurrencyValue: state.cryptoCurrency
+        cryptoCurrencyValue: state.cryptoCurrency,
     }
 }
 

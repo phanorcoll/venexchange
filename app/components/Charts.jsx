@@ -1,10 +1,28 @@
 import React, { Component } from 'react';
 import Linechart from './LineChart.jsx';
 import { connect } from 'react-redux';
-
+import { bindActionCreators } from 'redux';
+import { bitcoinHistory } from '../actions/actions.jsx';
+import LoadingComponent from './Loading.jsx';
+import _ from 'lodash';
+import numeral from 'numeral';
 class Charts extends Component {
 
+    componentWillMount() {
+        this.props.fetchbitcoinHistory();
+    }
+
     render() {
+        let bpi = this.props.bitcoinHistory["bpi"];
+        let btlabels = [];
+        let btPrice = [];
+        if (bpi !== undefined) {
+            _.map(bpi, (k, v) => {
+                //console.log(k);
+                btPrice.push(k)
+                btlabels.push(v)
+            });
+        }
         const dolarTodaydata = {
             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
             datasets: [
@@ -32,7 +50,8 @@ class Charts extends Component {
             ]
         };
         const BtcEthData = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            //labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            labels: btlabels,
             datasets: [
                 {
                     label: 'bitcoin',
@@ -52,9 +71,9 @@ class Charts extends Component {
                     pointHoverBorderWidth: 1,
                     pointRadius: 1,
                     pointHitRadius: 10,
-                    data: [480, 430, 450, 358, 80, 150, 500],
+                    data: btPrice,
                 },
-                {
+                /* {
                     label: 'Etherum',
                     fill: false,
                     lineTension: 0.1,
@@ -74,7 +93,7 @@ class Charts extends Component {
                     pointRadius: 4,
                     pointHitRadius: 10,
                     data: [500, 150, 80, 358, 450, 430, 480],
-                }
+                } */
             ]
         };
         return (
@@ -87,8 +106,25 @@ class Charts extends Component {
                         <Linechart chartData={BtcEthData} label="bitcoin - Etherum" />
                     </div>
                 </div>
+                <div id="chartjs-tooltip"></div>
             </div>
         );
     }
 }
-export default Charts;
+//export default Charts;
+
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+        fetchbitcoinHistory: bitcoinHistory
+    }, dispatch);
+};
+
+const mapStateToProps = (state) => {
+    return {
+        bitcoinHistory: state.bitcoinHistory
+    }
+}
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Charts);
