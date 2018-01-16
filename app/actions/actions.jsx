@@ -55,10 +55,14 @@ export const bitcoinHistory = () => {
         });
     } */
 
-    let btPrice=[]
-    _.map(bitcoinHistoryData["bpi"], (k, v) => {
-        btPrice.push([moment(v).format('DD/MM/YY'), k])
-    });
+    let btPrice = [
+        ['2017-12-15', 17601.9438, 85452.54],
+        ['2017-12-16', 12629.8138, 20542.87],
+        ['2017-12-17', 24785.40,13619.0288]
+    ]
+    /*  _.map(bitcoinHistoryData["bpi"], (k, v) => {
+         btPrice.push([moment(v).format('DD/MM/YY'), k])
+     }); */
 
     return ({
         type: FETCH_BITCOIN_HISTORY_DATA,

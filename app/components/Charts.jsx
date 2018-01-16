@@ -10,19 +10,23 @@ class Charts extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            optionsCryptoCurrency: {
+            optionsCryptoCurrencyHistory: {
+                title: 'Precios en USD ($) Bitcoin - Etherum',
                 "hAxis": { "title": "Fecha" },
-                "vAxis": { "title": "Bitcoin - Etherum" },
+                "vAxis": { "title": "USD $" },
                 legend: true,
             },
-            columnsCryptoCurrenc: [
+            columnsCryptoCurrencyHistory: [
                 { "label": "Fechas", "type": "string" },
-                { "label": "Bitcoin", "type": "number" }
+                { "label": "Bitcoin", "type": "number" },
+                { "label": "Etherum", "type": "number" }
+                
             ],
             optionsDolarToday: {
+                title: 'Precios en Bolivares (Bs.) Dolartoday',
                 "hAxis": { "title": "Fecha" },
-                "vAxis": { "title": "Precios Dolartoday" },
-                legend: true,
+                "vAxis": { "title": "Bs." },
+                legend: 'none',
             },
             rows: [
                 ['2017-12-15', 17601.9438],
@@ -31,7 +35,7 @@ class Charts extends Component {
             ],
             columnsDolarToday: [
                 { "label": "Fechas", "type": "string" },
-                { "label": "Dolartoday", "type": "number" }
+                { "label": "Bs", "type": "number" }
             ],
         };
     }
@@ -62,8 +66,8 @@ class Charts extends Component {
                         <Chart
                             chartType="LineChart"
                             rows={this.props.bitcoinHistory}
-                            columns={this.state.columnsCryptoCurrenc}
-                            options={this.state.optionsCryptoCurrency}
+                            columns={this.state.columnsCryptoCurrencyHistory}
+                            options={this.state.optionsCryptoCurrencyHistory}
                             graph_id="LineChart2"
                             width={'100%'}
                             height={'400px'}
