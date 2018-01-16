@@ -10,19 +10,28 @@ class Charts extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            options: {
-                /* "hAxis": { "title": "Fecha" }, */
+            optionsCryptoCurrency: {
+                "hAxis": { "title": "Fecha" },
                 "vAxis": { "title": "Bitcoin - Etherum" },
-                legend: 'none',
+                legend: true,
+            },
+            columnsCryptoCurrenc: [
+                { "label": "Fechas", "type": "string" },
+                { "label": "Bitcoin", "type": "number" }
+            ],
+            optionsDolarToday: {
+                "hAxis": { "title": "Fecha" },
+                "vAxis": { "title": "Precios Dolartoday" },
+                legend: true,
             },
             rows: [
                 ['2017-12-15', 17601.9438],
                 ['2017-12-16', 12629.8138]
 
             ],
-            columns: [
+            columnsDolarToday: [
                 { "label": "Fechas", "type": "string" },
-                { "label": "Precio", "type": "number" }
+                { "label": "Dolartoday", "type": "number" }
             ],
         };
     }
@@ -36,15 +45,26 @@ class Charts extends Component {
             <div className="main-wrapper">
                 <div className="chart-container">
                     <div className="dolar-today-data card">
-                        dolarToday
+                        <div className="btc-eth-data card">
+                            <Chart
+                                chartType="LineChart"
+                                rows={this.state.rows}
+                                columns={this.state.columnsDolarToday}
+                                options={this.state.optionsDolarToday}
+                                graph_id="LineChart1"
+                                width={'100%'}
+                                height={'400px'}
+                                legend_toggle
+                            />
+                        </div>
                     </div>
                     <div className="btc-eth-data card">
                         <Chart
                             chartType="LineChart"
                             rows={this.props.bitcoinHistory}
-                            columns={this.state.columns}
-                            options={this.state.options}
-                            graph_id="LineChart"
+                            columns={this.state.columnsCryptoCurrenc}
+                            options={this.state.optionsCryptoCurrency}
+                            graph_id="LineChart2"
                             width={'100%'}
                             height={'400px'}
                             legend_toggle
