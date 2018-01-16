@@ -1,91 +1,98 @@
-import React from 'react';
-import Linechart from './LineChart.jsx';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { bitcoinHistory } from '../actions/actions.jsx';
+import LoadingComponent from './Loading.jsx';
+import { Chart } from 'react-google-charts';
 
-const Charts = () => {
-    const dolarTodaydata = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [
-            {
-                label: 'DolarToday',
-                fill: false,
-                lineTension: 0.1,
-                backgroundColor: "rgba(225,0,0,0.4)",
-                borderColor: "red", // The main line color
-                borderCapStyle: 'square',
-                borderDash: [], // try [5, 15] for instance
-                borderDashOffset: 0.0,
-                borderJoinStyle: 'miter',
-                pointBorderColor: "black",
-                pointBackgroundColor: "white",
-                pointBorderWidth: 1,
-                pointHoverRadius: 8,
-                pointHoverBackgroundColor: "yellow",
-                pointHoverBorderColor: "brown",
-                pointHoverBorderWidth: 2,
-                pointRadius: 4,
-                pointHitRadius: 10,
-                data: [65, 59, 80, 81, 56, 55, 40],
-            }
-        ]
-    };
-    const BtcEthData = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [
-            {
-                label: 'bitcoin',
-                fill: false,
-                lineTension: 0.1,
-                backgroundColor: '#fff',
-                borderColor: '#1BCB23',
-                borderCapStyle: 'butt',
-                borderWidth: 1,
-                borderDash: [],
-                borderDashOffset: 0.0,
-                pointBorderColor: '#000',
-                pointBorderWidth: 7,
-                pointHoverRadius: 10,
-                pointHoverBackgroundColor: '#1BCB23',
-                pointHoverBorderColor: '#1BCB23',
-                pointHoverBorderWidth: 1,
-                pointRadius: 1,
-                pointHitRadius: 10,
-                data: [480, 430, 450, 358, 80, 150, 500],
+class Charts extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            optionsCryptoCurrencyHistory: {
+                title: 'Precios en USD ($) Bitcoin - Etherum',
+                "hAxis": { "title": "Fecha" },
+                "vAxis": { "title": "USD $" },
+                legend: true,
             },
-            {
-                label: 'Etherum',
-                fill: false,
-                lineTension: 0.1,
-                backgroundColor: "rgba(167,105,0,0.4)",
-                borderColor: "rgb(167, 105, 0)",
-                borderCapStyle: 'butt',
-                borderDash: [],
-                borderDashOffset: 0.0,
-                borderJoinStyle: 'miter',
-                pointBorderColor: "white",
-                pointBackgroundColor: "black",
-                pointBorderWidth: 1,
-                pointHoverRadius: 8,
-                pointHoverBackgroundColor: "brown",
-                pointHoverBorderColor: "yellow",
-                pointHoverBorderWidth: 2,
-                pointRadius: 4,
-                pointHitRadius: 10,
-                data: [500, 150, 80, 358, 450, 430, 480],
-            }
-        ]
-    };
-    return (
-        <div className="main-wrapper">
-            <div className="chart-container">
-                <div className="dolar-today-data card">
-                    <Linechart chartData={dolarTodaydata} label="DolarToday" />
+            columnsCryptoCurrencyHistory: [
+                { "label": "Fechas", "type": "string" },
+                { "label": "Bitcoin", "type": "number" },
+                { "label": "Etherum", "type": "number" }
+                
+            ],
+            optionsDolarToday: {
+                title: 'Precios en Bolivares (Bs.) Dolartoday',
+                "hAxis": { "title": "Fecha" },
+                "vAxis": { "title": "Bs." },
+                legend: 'none',
+            },
+            rows: [
+                ['2017-12-15', 17601.9438],
+                ['2017-12-16', 12629.8138]
+
+            ],
+            columnsDolarToday: [
+                { "label": "Fechas", "type": "string" },
+                { "label": "Bs", "type": "number" }
+            ],
+        };
+    }
+
+    componentWillMount() {
+        this.props.fetchbitcoinHistory();
+    }
+
+    render() {
+        return (
+            <div className="main-wrapper">
+                <div className="chart-container">
+                    <div className="dolar-today-data card">
+                        <div className="btc-eth-data card">
+                            <Chart
+                                chartType="LineChart"
+                                rows={this.state.rows}
+                                columns={this.state.columnsDolarToday}
+                                options={this.state.optionsDolarToday}
+                                graph_id="LineChart1"
+                                width={'100%'}
+                                height={'400px'}
+                                legend_toggle
+                            />
+                        </div>
+                    </div>
+                    <div className="btc-eth-data card">
+                        <Chart
+                            chartType="LineChart"
+                            rows={this.props.bitcoinHistory}
+                            columns={this.state.columnsCryptoCurrencyHistory}
+                            options={this.state.optionsCryptoCurrencyHistory}
+                            graph_id="LineChart2"
+                            width={'100%'}
+                            height={'400px'}
+                            legend_toggle
+                        />
+                    </div>
                 </div>
-                <div className="btc-eth-data card">
-                <Linechart chartData={BtcEthData} label="bitcoin - Etherum" />
             </div>
-            </div>
-        </div>
-    );
+        );
+    }
+}
+//export default Charts;
+
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+        fetchbitcoinHistory: bitcoinHistory
+    }, dispatch);
+};
+
+const mapStateToProps = (state) => {
+    return {
+        bitcoinHistory: state.bitcoinHistory
+    }
 }
 
-export default Charts;
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Charts);

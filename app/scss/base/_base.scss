@@ -84,7 +84,7 @@ body {
                 .ethereum {
                     color: $eth-color;
                 }
-                img{
+                img {
                     width: 40px;
                 }
             }
@@ -95,18 +95,38 @@ body {
             }
         }
     }
-    .chart-container{
+    .chart-container {
         display: grid;
         grid-template-areas: "chart-dt chart-btceth";
         grid-template-columns: 1fr 1fr;
         grid-gap: 10px;
         height: 400px;
-        .dolar-today-data{
+        .dolar-today-data {
             grid-area: chart-dt;
             width: 99%;
         }
-        .btc-eth-data{
+        .btc-eth-data {
             grid-area: chart-btceth;
         }
+    }
+    .loader {
+        margin: 0 auto;
+        border: 8px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 8px solid #e4d672;
+        border-bottom: 8px solid #212121;
+        width: 60px;
+        height: 60px;
+        -webkit-animation: spin 1.5s linear infinite;
+        animation: spin 1.5s linear infinite;
+    }
+    @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
     }
 }
