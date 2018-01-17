@@ -152,3 +152,96 @@ export const bitcoinHistoryData = {
             "updatedISO": "2018-01-15T00:03:00+00:00"
         }
 }
+
+export const bitcoinData = {
+    "ask": 9573.35,
+    "bid": 9550.27,
+    "last": 9561.23,
+    "high": 12254.62,
+    "low": 9204.90,
+    "open": {
+        "hour": 9439.55,
+        "day": 11337.63,
+        "week": 14209.04,
+        "month": 19325.94,
+        "month_3": 5625.56,
+        "month_6": 2054.81,
+        "year": 881.76
+    },
+    "averages": {
+        "day": 11356.65,
+        "week": 13317.30,
+        "month": 14290.38
+    },
+    "volume": 381470.60321431,
+    "changes": {
+        "percent": {
+            "hour": 1.29,
+            "day": -15.67,
+            "week": -32.71,
+            "month": -50.53,
+            "month_3": 69.96,
+            "month_6": 365.31,
+            "year": 984.33
+        },
+        "price": {
+            "hour": 121.68,
+            "day": -1776.41,
+            "week": -4647.81,
+            "month": -9764.71,
+            "month_3": 3935.67,
+            "month_6": 7506.42,
+            "year": 8679.47
+        }
+    },
+    "volume_percent": 80.87,
+    "timestamp": 1516203896,
+    "display_timestamp": "2018-01-17 15:44:56"
+}
+
+//export const ethereumData = {}
+export const ethereumData = {
+    "ask": 793.7045,
+    "bid": 792.8325,
+    "last": 793.6353,
+    "high": 1154.3512,
+    "low": 765.6809,
+    "open": {
+        "hour": 787.7375,
+        "day": 1064.8733,
+        "week": 1266.2015,
+        "month": 715.4045,
+        "month_3": 324.0063,
+        "month_6": 171.5022,
+        "year": 10.0700
+    },
+    "averages": {
+        "day": 915.2968,
+        "week": 1178.1724,
+        "month": 1047.1346
+    },
+    "volume": 2499941.88952738,
+    "changes": {
+        "percent": {
+            "hour": 0.7500,
+            "day": -25.4700,
+            "week": -37.3200,
+            "month": 10.9400,
+            "month_3": 144.9400,
+            "month_6": 362.7600,
+            "year": 7781.1800
+        },
+        "price": {
+            "hour": 5.9000,
+            "day": -271.2400,
+            "week": -472.5700,
+            "month": 78.2300,
+            "month_3": 469.6300,
+            "month_6": 622.1300,
+            "year": 783.5700
+        }
+    },
+    "volume_percent": 84.0842,
+    "timestamp": 1516205004,
+    "display_timestamp": "2018-01-17 16:03:24"
+}

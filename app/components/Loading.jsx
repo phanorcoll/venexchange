@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 var styles = {
     content: {
         textAlign: 'center',
-        fontSize: '25px',
+        fontSize: '16px',
         margin: '20px 0px 0px 0px'
     }
 }

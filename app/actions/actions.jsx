@@ -3,8 +3,8 @@ import axios from 'axios';
 import numeral from 'numeral';
 import moment from 'moment';
 import _ from 'lodash';
-import { FETCH_DOLARTODAY_DATA, FETCH_CRYPTO_CURRENCY_DATA, FETCH_BITCOIN_HISTORY_DATA } from './Types.jsx';
-import { dolartodayData, defaultData, bitcoinHistoryData } from '../data/dummyData.jsx';
+import { FETCH_DOLARTODAY_DATA, FETCH_BITCOIN_HISTORY_DATA, FETCH_BITCOIN_CURRENT_DATA, FETCH_ETHEREUM_CURRENT_DATA } from './Types.jsx';
+import { dolartodayData, bitcoinHistoryData, bitcoinData, ethereumData } from '../data/dummyData.jsx';
 
 export const dtData = () => {
     /* const request = axios.get('https://s3.amazonaws.com/dolartoday/data.json');
@@ -23,21 +23,32 @@ export const dtData = () => {
     });
 }
 
-export const cryptoCurrencyData = () => {
-    /* const request = axios.get('https://api.coinmarketcap.com/v1/ticker/?limit=2');
-    return (dispatch) => {
-        request.then(({ data }) => {
+
+//Gets the current info for bitcoin
+export const bitcoinCurrentData = () => {
+    return ({
+        type: FETCH_BITCOIN_CURRENT_DATA,
+        payload: bitcoinData
+    });
+}
+
+//Gets the current info for Ethereum
+export const ethereumCurrentData = () => {
+    /* const request = axios.get('https://apiv2.bitcoinaverage.com/indices/global/ticker/ETHUSD');
+    return(dispatch)=>{
+        request.then(({data})=>{
             dispatch({
-                type: FETCH_CRYPTO_CURRENCY_DATA,
+                type: FETCH_ETHEREUM_CURRENT_DATA,
                 payload: data
             })
         });
     } */
     return ({
-        type: FETCH_CRYPTO_CURRENCY_DATA,
-        payload: defaultData
+        type: FETCH_ETHEREUM_CURRENT_DATA,
+        payload: ethereumData
     });
 }
+
 
 export const bitcoinHistory = () => {
     /* const request = axios.get('https://api.coindesk.com/v1/bpi/historical/close.json');
@@ -58,7 +69,7 @@ export const bitcoinHistory = () => {
     let btPrice = [
         ['2017-12-15', 17601.9438, 85452.54],
         ['2017-12-16', 12629.8138, 20542.87],
-        ['2017-12-17', 24785.40,13619.0288]
+        ['2017-12-17', 24785.40, 13619.0288]
     ]
     /*  _.map(bitcoinHistoryData["bpi"], (k, v) => {
          btPrice.push([moment(v).format('DD/MM/YY'), k])
