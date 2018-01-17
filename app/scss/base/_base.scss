@@ -97,8 +97,9 @@ body {
     }
     .chart-container {
         display: grid;
-        grid-template-areas: "chart-dt chart-btceth";
-        grid-template-columns: 1fr 1fr;
+        grid-template-areas: "chart-dt" "chart-btceth";
+        //grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         grid-gap: 10px;
         height: 400px;
         .dolar-today-data {
