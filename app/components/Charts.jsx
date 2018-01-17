@@ -18,9 +18,8 @@ class Charts extends Component {
             },
             columnsCryptoCurrencyHistory: [
                 { "label": "Fechas", "type": "string" },
-                { "label": "Bitcoin", "type": "number" },
-                { "label": "Etherum", "type": "number" }
-                
+                { "label": "Bitcoin", "type": "number" }
+
             ],
             optionsDolarToday: {
                 title: 'Precios en Bolivares (Bs.) Dolartoday',
@@ -47,34 +46,40 @@ class Charts extends Component {
     render() {
         return (
             <div className="main-wrapper">
-                <div className="chart-container">
-                    <div className="dolar-today-data card">
-                        <div className="btc-eth-data card">
-                            <Chart
-                                chartType="LineChart"
-                                rows={this.state.rows}
-                                columns={this.state.columnsDolarToday}
-                                options={this.state.optionsDolarToday}
-                                graph_id="LineChart1"
-                                width={'100%'}
-                                height={'400px'}
-                                legend_toggle
-                            />
+                {
+                    (_.isEmpty(this.props.bitcoinHistory)) ?
+
+                        <LoadingComponent text='Cargando charts data...!' />
+                        :
+                        <div className="chart-container">
+                            <div className="dolar-today-data card">
+                                <div className="btc-eth-data card">
+                                    <Chart
+                                        chartType="LineChart"
+                                        rows={this.state.rows}
+                                        columns={this.state.columnsDolarToday}
+                                        options={this.state.optionsDolarToday}
+                                        graph_id="LineChart1"
+                                        width={'100%'}
+                                        height={'400px'}
+                                        legend_toggle
+                                    />
+                                </div>
+                            </div>
+                            <div className="btc-eth-data card">
+                                <Chart
+                                    chartType="LineChart"
+                                    rows={this.props.bitcoinHistory}
+                                    columns={this.state.columnsCryptoCurrencyHistory}
+                                    options={this.state.optionsCryptoCurrencyHistory}
+                                    graph_id="LineChart2"
+                                    width={'100%'}
+                                    height={'400px'}
+                                    legend_toggle
+                                />
+                            </div>
                         </div>
-                    </div>
-                    <div className="btc-eth-data card">
-                        <Chart
-                            chartType="LineChart"
-                            rows={this.props.bitcoinHistory}
-                            columns={this.state.columnsCryptoCurrencyHistory}
-                            options={this.state.optionsCryptoCurrencyHistory}
-                            graph_id="LineChart2"
-                            width={'100%'}
-                            height={'400px'}
-                            legend_toggle
-                        />
-                    </div>
-                </div>
+                }
             </div>
         );
     }

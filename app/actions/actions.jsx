@@ -51,14 +51,16 @@ export const ethereumCurrentData = () => {
 
 
 export const bitcoinHistory = () => {
-    /* const request = axios.get('https://api.coindesk.com/v1/bpi/historical/close.json');
+
+    /* const request = axios.get('https://apiv2.bitcoinaverage.com/indices/global/history/BTCUSD?period=daily&?format=json');
     return (dispatch) => {
         request.then(({ data }) => {
             let btPrice=[]
-            _.map(data["bpi"], (k, v) => {
-                btPrice.push([moment(v).format('DD/MM/YY'), k])
+            _.map(data, (k, v) => {
+                //btPrice.push([moment(v).format('DD/MM/YY'), k])
+                btPrice.push([k['time'],k['average']])
             });
-            console.log(btPrice)
+            //console.log(btPrice)
             dispatch({
                 type: FETCH_BITCOIN_HISTORY_DATA,
                 payload: btPrice
@@ -66,14 +68,10 @@ export const bitcoinHistory = () => {
         });
     } */
 
-    let btPrice = [
-        ['2017-12-15', 17601.9438, 85452.54],
-        ['2017-12-16', 12629.8138, 20542.87],
-        ['2017-12-17', 24785.40, 13619.0288]
-    ]
-    /*  _.map(bitcoinHistoryData["bpi"], (k, v) => {
-         btPrice.push([moment(v).format('DD/MM/YY'), k])
-     }); */
+    let btPrice = []
+     _.map(bitcoinHistoryData, (k, v) => {
+         btPrice.push([k['time'],k['average']])
+     });
 
     return ({
         type: FETCH_BITCOIN_HISTORY_DATA,

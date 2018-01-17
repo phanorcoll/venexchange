@@ -133,25 +133,53 @@ export const dolartodayData = {
 //const defaultData=[]
 
 //bitcoin history
-export const bitcoinHistoryData = {
-    "bpi":
-        {
-            "2018-01-08": 14970.3575,
-            "2018-01-09": 14439.4738,
-            "2018-01-10": 14890.7225,
-            "2018-01-11": 13287.26,
-            "2018-01-12": 13812.715,
-            "2018-01-13": 14188.785,
-            "2018-01-14": 13619.0288
-        },
-    "disclaimer":
-        "This data was produced from the CoinDesk Bitcoin Price Index. BPI value data returned as USD.",
-    "time":
-        {
-            "updated": "Jan 15, 2018 00:03:00 UTC",
-            "updatedISO": "2018-01-15T00:03:00+00:00"
-        }
-}
+//export const bitcoinHistoryData = []
+export const bitcoinHistoryData = [
+    {
+        "average": 10253.73,
+        "time": "2018-01-17 17:09:00"
+    },
+    {
+        "average": 10304.90,
+        "time": "2018-01-17 17:08:00"
+    },
+    {
+        "average": 10233.60,
+        "time": "2018-01-17 17:07:00"
+    },
+    {
+        "average": 10214.49,
+        "time": "2018-01-17 17:06:00"
+    },
+    {
+        "average": 10276.51,
+        "time": "2018-01-17 17:05:00"
+    },
+    {
+        "average": 10303.85,
+        "time": "2018-01-17 17:04:00"
+    },
+    {
+        "average": 10308.30,
+        "time": "2018-01-17 17:03:00"
+    },
+    {
+        "average": 10337.23,
+        "time": "2018-01-17 17:02:00"
+    },
+    {
+        "average": 10367.59,
+        "time": "2018-01-17 17:01:00"
+    },
+    {
+        "average": 10366.38,
+        "time": "2018-01-17 17:00:00"
+    },
+    {
+        "average": 10366.38,
+        "time": "2018-01-17 16:59:00"
+    }
+]
 
 export const bitcoinData = {
     "ask": 9573.35,
