@@ -4,11 +4,12 @@ import { bindActionCreators } from 'redux';
 import { bitcoinHistory } from '../actions/actions.jsx';
 import LoadingComponent from './Loading.jsx';
 import { Chart } from 'react-google-charts';
-
+import moment from 'moment';
 class Charts extends Component {
 
     constructor(props) {
         super(props);
+        moment.locale();
         this.state = {
             optionsCryptoCurrencyHistory: {
                 title: 'Precios en USD ($) Bitcoin - Etherum',
@@ -18,14 +19,15 @@ class Charts extends Component {
             },
             columnsCryptoCurrencyHistory: [
                 { "label": "Fechas", "type": "string" },
-                { "label": "Bitcoin", "type": "number" }
+                { "label": "Bitcoin", "type": "number" },
+                { "label": "Ethereum", "type": "number" }
 
             ],
             optionsDolarToday: {
                 title: 'Precios en Bolivares (Bs.) Dolartoday',
                 "hAxis": { "title": "Fecha" },
                 "vAxis": { "title": "Bs." },
-                legend: 'none',
+                legend: true,
             },
             rows: [
                 ['2017-12-15', 17601.9438],
@@ -34,7 +36,7 @@ class Charts extends Component {
             ],
             columnsDolarToday: [
                 { "label": "Fechas", "type": "string" },
-                { "label": "Bs", "type": "number" }
+                { "label": "DolarToday", "type": "number" }
             ],
         };
     }

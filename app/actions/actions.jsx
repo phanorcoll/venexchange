@@ -58,7 +58,7 @@ export const bitcoinHistory = () => {
             let btPrice=[]
             _.map(data, (k, v) => {
                 //btPrice.push([moment(v).format('DD/MM/YY'), k])
-                btPrice.push([k['time'],k['average']])
+                btPrice.push([moment(k['time']).format("MMM Do"),k['average']])
             });
             //console.log(btPrice)
             dispatch({
@@ -68,10 +68,13 @@ export const bitcoinHistory = () => {
         });
     } */
 
-    let btPrice = []
-     _.map(bitcoinHistoryData, (k, v) => {
-         btPrice.push([k['time'],k['average']])
-     });
+    let btPrice = [
+        ['2018-01-17',10253.73,859.7379],
+        ['2018-01-17',10304.90,858.8635],
+    ]
+    /*  _.map(bitcoinHistoryData, (k, v) => {
+         btPrice.push([moment(k['time']).format("MMM Do"),k['average']])
+     }); */
 
     return ({
         type: FETCH_BITCOIN_HISTORY_DATA,
