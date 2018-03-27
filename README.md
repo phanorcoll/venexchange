@@ -12,3 +12,6 @@ Dashboard to display de current value of a US dollar in Venezuela. It also shows
 
 * Node version v8.6.0
 * npm version 5.6.0
+
+**NOTE**
+for the moment the code has been moved to a private repo, the on going result can be view here https://www.mykurrencies.xyz/
